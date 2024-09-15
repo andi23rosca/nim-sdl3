@@ -121,4 +121,9 @@ type
     `type`*: SDL_EventType
     reserved*: uint32
     timestamp*: uint64
+  SDL_Event* {.union.} = object
+    `type`*: SDL_EventType
+    common*: SDL_CommonEvent
+    quit*: SDL_QuitEvent
+    padding: array[128, uint8]
 
