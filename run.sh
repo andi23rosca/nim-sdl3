@@ -1,1 +1,2 @@
-nim c -r --noMain cbs.nim
+#!/bin/bash
+nim c -r --noMain simpleRender.nim
