@@ -1,0 +1,3 @@
+# nim c -r --nimcache:./generated_c --noMain cbs.nim
+# nim c -r main.nim
+nim c -r --noMain cbs.nim
