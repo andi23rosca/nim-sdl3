@@ -1,4 +1,4 @@
-import defs/templates, defs/events, defs/init, defs/video, defs/render
+import defs/templates, defs/events, defs/init, defs/video, defs/render, defs/rect
 
 defineSharedLibraryPragmas()
 
@@ -29,13 +29,15 @@ proc AppInit*(app: ptr AppState, argc: cint, argv: UncheckedArray[cstring]): SDL
 
   return SDL_APP_CONTINUE
 
+
 proc AppIterate*(app: AppState): SDL_AppResult {.exportc, cdecl, dynlib.} =
   discard app.renderer.SDL_SetRenderDrawColor(app.red, 0, 0, 255)
   discard app.renderer.SDL_RenderClear()
 
+  let testRect: SDL_FRect = SDL_FRect(x: 100, y: 100, w: 100, h: 100)
   discard app.renderer.SDL_SetRenderDrawColor(255, 255, 255, 255)
-
-  discard app.renderer.SDL_RenderLine(0, cfloat(app.red) / 255 * app.height.cfloat, cfloat(app.red) / 255 * app.width.cfloat, 80)
+  discard app.renderer.SDL_RenderFillRect(addr testRect)
+  # discard app.renderer.SDL_RenderLine(0, cfloat(app.red) / 255 * app.height.cfloat, cfloat(app.red) / 255 * app.width.cfloat, 80)
 
   discard app.renderer.SDL_RenderPresent()
   if app.fadeDir:

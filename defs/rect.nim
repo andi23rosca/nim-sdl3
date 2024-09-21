@@ -1,5 +1,5 @@
 type SDL_FRect* = object
-  x: float
-  y: float
-  w: float
-  h: float
+  x*: cfloat
+  y*: cfloat
+  w*: cfloat
+  h*: cfloat

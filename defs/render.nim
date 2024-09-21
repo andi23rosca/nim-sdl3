@@ -1,8 +1,8 @@
-import video, pixels
+import video, pixels, rect
 
 type SDL_TextureAccess = enum
-  SDL_TEXTUREACCESS_STATIC,
-  SDL_TEXTUREACCESS_STREAMING,
+  SDL_TEXTUREACCESS_STATIC
+  SDL_TEXTUREACCESS_STREAMING
   SDL_TEXTUREACCESS_TARGET
 
 type SDL_Renderer* = ptr object
@@ -19,5 +19,9 @@ proc SDL_RenderClear*(renderer: ptr SDL_Renderer): bool {.importc.};
 proc SDL_RenderPresent*(renderer: ptr SDL_Renderer): bool {.importc.};
 
 proc SDL_RenderLine*(renderer: ptr SDL_Renderer, x1, y1, x2, y2: cfloat): bool {.importc.}
+
+proc SDL_RenderRect*(renderer: ptr SDL_Renderer, rect: ptr SDL_FRect): bool {.importc.}
+proc SDL_RenderFillRect*(renderer: ptr SDL_Renderer, rect: ptr SDL_FRect): bool {.importc.}
+
 
 proc SDL_CreateTexture*(renderer: ptr SDL_Renderer, format: SDL_PixelFormat, access: SDL_TextureAccess, w: cint, h: cint): ptr SDL_Texture {.importc.}
